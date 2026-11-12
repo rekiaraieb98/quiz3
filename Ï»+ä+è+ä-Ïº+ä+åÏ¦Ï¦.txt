@@ -1,0 +1,29 @@
+دليل نشر الفرض الإلكتروني (كل الملفات في مستوى واحد — بدون مجلدات)
+
+الملفات (ارفعيها كلها في الصفحة الرئيسية للمستودع):
+index.html      واجهة التلميذ
+admin.html      لوحة الأستاذة
+api.mjs         استقبال الإجابات والتصحيح وحفظ النتائج
+questions.mjs   بنك الأسئلة كله في هذا الملف الواحد (265 سؤالًا، يُختار 20 عشوائيًا لكل تلميذ)
+الصور (jpg):    processor  processor-i5  ram  keyboard  monitor  hdd  hdd-wd  cpu-intel  cooler  thermal-paste  thermal-paste2  thermal-paste-apply  motherboard  motherboard-labeled
+netlify.toml    إعدادات النشر
+package.json    المكتبات
+build.mjs       تجهيز مجلدي النشر تلقائيًا
+
+الرفع على GitHub:
+1) افتحي المستودع ← Add file ← Upload files.
+2) اسحبي كل الملفات (22 ملفًا). احذفي من المستودع ملفات svg القديمة (processor.svg, ram.svg, keyboard.svg, monitor.svg, ssd.svg) إن وُجدت.
+3) Commit changes. (يبدأ Netlify النشر تلقائيًا.)
+
+إعدادات Netlify (تُقرأ من netlify.toml، لا تغيّريها):
+Build command: node build.mjs
+Publish directory: dist
+Functions directory: netlify/functions
+
+كلمة سر الأستاذة: Site configuration ← Environment variables ← ADMIN_PASSWORD، ثم أعيدي النشر.
+لوحة الأستاذة: الرابط + /admin
+
+إضافة صورة جديدة: ارفعي ملف jpg في الصفحة الرئيسية، وأضيفي اسمه إلى قائمة SITE في build.mjs،
+واكتبي في السؤال:  "image": "/اسم-الصورة.jpg"
+
+قبل الفرض الحقيقي: من لوحة الأستاذة اضغطي «مسح كل النتائج» لحذف نتائج التجارب.
